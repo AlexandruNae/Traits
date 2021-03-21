@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formular</title>
+</head>
+<body>
+<h1>SALUT FORMULAR</h1>
+
+<form action="add" method="post">
+  {% csrf_token %}
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="prenume"><br>
+  <label for="username">First name:</label><br>
+  <input type="text" id="lname" name="nume">
+    <br>
+    <br>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+  <input type="radio" id="other" name="gender" value="other">
+  <label for="other">Other</label>
+    <br>
+    <br>
+    <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+
+  <label for="username">Password:</label><br>
+  <input type="text" id="password" name="parola"><br>
+
+    <label for="username">Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+
+    <label for="username">Brief description:</label><br>
+  <input type="text" id="description" name="descriere"><br>
+    <br>
+    <br>
+    <input type="submit" value="OK">
+</form>
+
+</body>
+</html>
+
+<script>
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+</script>

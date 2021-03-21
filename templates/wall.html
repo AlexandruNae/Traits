@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<h1> WALL-ul lui </h1>
+<h1>{{user.username}}</h1>
+<br>
+<br>
+<br>
+<h2>Postari:</h2>
+<br>
+<br>
+<br>
+{% if posts is not None %}
+{% for post in posts %}
+<div class="card">
+    <div class="card-header">
+            <p>{{post.titlu}}<p>
+
+    </div>
+    <div class="card-body">
+        <blackquote class="blackquote mb-0">
+            <p>{{post.text}}<p>
+            {% if post.good_bad == 1 %}
+                <footer class="blackquote-footer">Good review</footer>
+            {% else %}
+                <footer class="blackquote-footer">Bad review</footer>
+            {% endif %}
+        </blackquote>
+
+
+
+    </div>
+        {% if user_auth.id == post.id_user_poster.id %}
+        <a class="btn btn-primary" href="{% url 'delete_post' post_id=post.id_postare %}" role="button">STERGE</a>
+
+{% endif %}
+</div>
+<br>
+<br>
+{% endfor%}
+{% endif %}
+{% if user_auth.is_authenticated %}
+{% if user_auth.id != user.id %}
+<form action="/add/" method="POST">
+  {% csrf_token %}
+    <h2>Adauaga un post</h2>
+  <label for="titlu">Titlu:</label><br>
+  <input type="text" id="titlu" name="titlu"><br>
+
+    <label for="text">Text:</label><br>
+  <input type="text" id="text" name="text"><br>
+
+  <input type="radio" id="good" name="good_bad" value="1">
+  <label for="good">Good</label><br>
+  <input type="radio" id="bad" name="good_bad" value="0">
+  <label for="bad">Bad</label><br>
+
+  <input type="hidden" id="posted" name="posted" value="{{user.id}}" ><br>
+
+    <input type="submit" value="OK">
+</form>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+</body>
+</html>

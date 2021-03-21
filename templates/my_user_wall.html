@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    {% block content %}
+    {% if user.is_authenticated %}
+        WALL ul lui
+        {% block includes %}
+        {{ user }}
+        {% endblock includes %}
+    <p>in if , a mers</p>
+    <p><a href="logout">LOGOUT</a></p>
+    {% else %}
+        <p><a href="login">LOGIN</a></p>
+    {% endif %}
+
+    {% endblock %}
+</h1>
+</body>
+</html>

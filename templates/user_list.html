@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} All users {% endblock %}
+
+{% block content %}
+    {% for user in users %}
+    <h1><a class="list-group-item list-group-item-action" href="{% url 'wall' user_id=user.id %}">{{user.username}}</a></h1>
+
+    {% endfor%}
+{% endblock %}
